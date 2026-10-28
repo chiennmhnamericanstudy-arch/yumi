@@ -49,9 +49,6 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <div className="preview-banner">
-          Local editorial preview · Student voice and publication review pending
-        </div>
         <Navigation />
         <main id="main" tabIndex={-1}>
           {children}
