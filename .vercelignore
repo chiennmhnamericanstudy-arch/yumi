@@ -8,7 +8,7 @@ node_modules/
 # Private source material — never upload
 raw-drive/
 sources/
-assets/
+/assets/
 docs/media-audit/
 review-previews/
 media-source/
