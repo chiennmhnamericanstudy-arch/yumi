@@ -1,0 +1,24 @@
+# Dependencies, builds and local Vercel state
+node_modules/
+.next/
+.git/
+.vercel/
+.env*
+
+# Private source material — never upload
+raw-drive/
+sources/
+assets/
+docs/media-audit/
+review-previews/
+media-source/
+tmp/
+
+# Local tools and QA output
+.tools/
+.venv/
+.taste-skill/
+test-results/
+playwright-report/
+*.tsbuildinfo
+*.log
