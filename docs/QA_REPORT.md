@@ -1,5 +1,8 @@
 # Portfolio QA report
 
+> Historical report from the earlier 21-image integration. Superseded for the
+> current 40-image editorial refinement by `FINAL_REFINEMENT_REPORT.md`.
+
 Date: 28 October 2026 (Asia/Saigon). Tested local production build at http://127.0.0.1:3000.
 
 Latest run includes both image batches explicitly approved by the user, totaling 21 images. The production build, lint and six media-pipeline tests passed. The browser suite decodes visible images at every tested width, fetches each approved WebP, checks failed-image fallback and exercises the 14-work Yumi gallery. Total optimized media is 4,102,400 bytes versus 31,404,864 source bytes (86.9% smaller); all outputs are at most 2000 px per side and have no EXIF. The three supplied reference PDFs were fetched and all 81 pages visually reviewed.

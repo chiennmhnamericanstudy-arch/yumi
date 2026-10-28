@@ -1,10 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource-variable/syne";
-import "@fontsource-variable/dm-sans";
+import { Be_Vietnam_Pro, Syne } from "next/font/google";
 import "./globals.css";
+import "./editorial-refinement.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
+
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-vietnamese",
+});
+
+const syne = Syne({
+  subsets: ["latin", "latin-ext"],
+  weight: "variable",
+  display: "swap",
+  variable: "--font-editorial",
+});
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.SITE_URL ?? "http://127.0.0.1:3000"),
   title: {
@@ -30,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${beVietnamPro.variable} ${syne.variable}`}>
       <body id="top">
         <a href="#main" className="skip-link">
           Skip to content

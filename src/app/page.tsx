@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import hatBoiMaskCutout from "@/assets/hat-boi-performer-v2.webp";
 import { MediaPlate } from "@/components/media";
 import { mediaFor } from "@/data/media";
 import { projects, student } from "@/data/projects";
@@ -21,33 +23,56 @@ export default function Home() {
 
   return (
     <>
-      <section className="mag-cover frame" aria-labelledby="cover-title">
-        <div className="mag-cover-meta">
-          <p>ART PORTFOLIO · ISSUE 01</p>
+      <section className="editorial-hero frame" aria-labelledby="cover-title">
+        <div className="hero-atmosphere" aria-hidden="true">
+          <span /><span /><span />
+        </div>
+        <div className="hero-overlay" aria-hidden="true" />
+        <div className="hero-meta">
+          <p>Heritage in Motion<br />A communication portfolio</p>
           <p>Ho Chi Minh City, Vietnam<br />2024—2026</p>
         </div>
-        <h1 id="cover-title" className="mag-cover-name">Như<br />Ngọc</h1>
-        <p className="mag-cover-kicker">Heritage in motion</p>
-        <div className="mag-cover-images">
-          <MediaPlate image={heritageArchive[0]} label="Hát Bội" className="mag-cover-mask" showCaption={false} priority />
-          <MediaPlate image={mediaFor("Yumi / Editorial Portraits")[0]} label="Yumi" kind="Artwork" className="mag-cover-character" showCaption={false} priority />
+        <div className="hero-stage">
+          <h1 id="cover-title" className="hero-title" lang="vi" aria-label="Như Ngọc — student communicator and illustrator">
+            <span className="line"><span data-line style={{ "--i": 0 } as React.CSSProperties}>Như</span></span>
+            <span className="line"><span data-line style={{ "--i": 1 } as React.CSSProperties}>Ngọc</span></span>
+          </h1>
+          <p className="hero-role-line">Student communicator &amp; illustrator</p>
+          <Image
+            className="hero-mask-cutout"
+            src={hatBoiMaskCutout}
+            alt="Ornate opera performer illustration with a blue-and-gold headdress and red costume."
+            width={866}
+            height={768}
+            priority
+            sizes="(max-width: 600px) 72vw, (max-width: 900px) 48vw, 31vw"
+          />
+          <MediaPlate
+            image={mediaFor("Yumi / Editorial Portraits")[0]}
+            label="Yumi"
+            kind="Artwork"
+            className="hero-artwork"
+            showCaption={false}
+            priority
+          />
+          <span className="hero-ornament" aria-hidden="true">戲</span>
         </div>
-        <div className="mag-cover-bottom">
-          <p>{student.name}<br />Student communicator & illustrator</p>
-          <p className="mag-cover-statement">Culture, image and voice — assembled as a living art magazine.</p>
+        <div className="hero-bottom">
+          <p className="hero-identity"><strong>{student.name}</strong><span>Student communicator &amp; illustrator</span></p>
+          <p className="hero-statement">Culture, image and voice — assembled as a living art magazine.</p>
           <Link className="mag-arrow-link" href="#co-sac-tan-thanh">Open the issue <span aria-hidden="true">↓</span></Link>
         </div>
       </section>
 
       <section id="co-sac-tan-thanh" className="mag-chapter heritage-issue" aria-labelledby="heritage-title">
-        <div className="heritage-ribbon" aria-hidden="true">CỔ SẮC · TÂN THANH · HÁT BỘI · CỔ SẮC · TÂN THANH</div>
+        <div className="chapter-atmosphere" aria-hidden="true"><span /></div>
+        <div className="chapter-overlay" aria-hidden="true" />
         <div className="heritage-issue-inner frame">
-          <header className="heritage-editorial-head">
-            <p className="mag-folio">01 / CULTURAL COMMUNICATION</p>
-            <h2 id="heritage-title">Cổ Sắc<br /><em>Tân Thanh</em></h2>
+          <header className="heritage-editorial-head" data-reveal>
+            <h2 id="heritage-title" lang="vi">Cổ Sắc<br />Tân Thanh</h2>
             <p className="heritage-deck">Giving tradition a new voice.</p>
           </header>
-          <div className="heritage-mask-wall">
+          <div className="heritage-mask-wall" data-reveal>
             {heritageArchive.map((image, index) => (
               <MediaPlate image={image} label="Hát Bội" className={`heritage-shot heritage-shot-${index + 1}`} key={image.src} />
             ))}
@@ -66,14 +91,16 @@ export default function Home() {
       </section>
 
       <section className="mag-chapter yumi-issue" aria-labelledby="yumi-title">
-        <header className="yumi-editorial-head frame">
-          <p className="mag-folio">02 / ILLUSTRATION STUDIO</p>
-          <h2 id="yumi-title">A world<br />drawn by hand.</h2>
+        <div className="chapter-atmosphere" aria-hidden="true"><span /></div>
+        <div className="chapter-overlay" aria-hidden="true" />
+        <header className="yumi-editorial-head frame" data-reveal>
+          <p className="chapter-label">Illustration studio</p>
+          <h2 id="yumi-title">Yumi<br />Studio</h2>
           <p>Yumi is a sketchbook left open: portraits, character systems, sequential stories and objects people can hold.</p>
           <Link className="mag-arrow-link" href={`/work/${yumi.slug}`}>Enter Yumi Studio <span aria-hidden="true">↗</span></Link>
         </header>
-        <div className="yumi-tape" aria-hidden="true">EXPRESSIONS / PORTRAITS / COMICS / LITTLE OBJECTS / EXPRESSIONS</div>
-        <div className="yumi-archive frame">
+        <div className="yumi-tape" aria-hidden="true"><span className="marquee-track"><span>EXPRESSIONS / PORTRAITS / COMICS / LITTLE OBJECTS / EXPRESSIONS&nbsp;·&nbsp;</span><span aria-hidden="true">EXPRESSIONS / PORTRAITS / COMICS / LITTLE OBJECTS / EXPRESSIONS&nbsp;·&nbsp;</span></span></div>
+        <div className="yumi-archive frame" data-reveal>
           {yumiArchive.map((image, index) => (
             <MediaPlate image={image} label="Yumi" kind="Artwork" className={`yumi-card yumi-card-${(index % 7) + 1}`} key={image.src} />
           ))}
@@ -81,12 +108,13 @@ export default function Home() {
       </section>
 
       <section className="mag-chapter debate-issue frame" aria-labelledby="debate-title">
-        <header className="debate-head">
-          <p className="mag-folio">03 / IDEAS IN PUBLIC</p>
-          <h2 id="debate-title">Give ideas<br /><span>a stage.</span></h2>
+        <div className="chapter-atmosphere" aria-hidden="true"><span /></div>
+        <div className="chapter-overlay" aria-hidden="true" />
+        <header className="debate-head" data-reveal>
+          <h2 id="debate-title">Ideas on<br /><span>stage.</span></h2>
           <p>{debate.summary}</p>
         </header>
-        <div className="debate-broadsheet">
+        <div className="debate-broadsheet" data-reveal>
           {debateArchive.map((image, index) => (
             <MediaPlate image={image} label="Debate" className={`debate-photo debate-photo-${index + 1}`} key={image.src} />
           ))}
@@ -98,14 +126,16 @@ export default function Home() {
       </section>
 
       <section className="mag-chapter community-issue" aria-labelledby="community-title">
+        <div className="chapter-atmosphere" aria-hidden="true"><span /></div>
+        <div className="chapter-overlay" aria-hidden="true" />
         <div className="community-grid frame">
-          <header className="community-head">
-            <p className="mag-folio">04 / COMMUNITY FIELD NOTES</p>
-            <h2 id="community-title">Diary of the<br /><em>Blue Rose</em></h2>
+          <header className="community-head" data-reveal>
+            <h2 id="community-title">Blue<br />Rose</h2>
+            <p className="chapter-label">Community field notes</p>
             <p>{community.summary}</p>
             <Link className="mag-arrow-link" href={`/work/${community.slug}`}>Open the field notes <span aria-hidden="true">↗</span></Link>
           </header>
-          <div className="community-photos">
+          <div className="community-photos" data-reveal>
             {communityArchive.map((image, index) => (
               <MediaPlate image={image} label="Blue Rose" className={`community-photo community-photo-${index + 1}`} key={image.src} />
             ))}
@@ -115,16 +145,17 @@ export default function Home() {
       </section>
 
       <section className="mag-chapter performance-issue" aria-labelledby="performance-title">
-        <div className="performance-heading frame">
-          <p className="mag-folio">INTERLUDE / PERFORMANCE & MOVEMENT</p>
-          <h2 id="performance-title">Ideas can<br /><em>move.</em></h2>
+        <div className="chapter-atmosphere" aria-hidden="true"><span /></div>
+        <div className="chapter-overlay" aria-hidden="true" />
+        <div className="performance-heading frame" data-reveal>
+          <h2 id="performance-title">In<br />motion.</h2>
           <p>
             A Teachers’ Day performance honoring sanitation workers — ensemble
             rhythm, stage presence and communication without a microphone.
           </p>
         </div>
-        <div className="performance-strip" aria-hidden="true">ENERGY / TIMING / TEAMWORK / STORY / ENERGY / TIMING / TEAMWORK</div>
-        <div className="performance-archive frame">
+        <div className="performance-strip" aria-hidden="true"><span className="marquee-track"><span>ENERGY / TIMING / TEAMWORK / STORY / ENERGY / TIMING / TEAMWORK&nbsp;·&nbsp;</span><span aria-hidden="true">ENERGY / TIMING / TEAMWORK / STORY / ENERGY / TIMING / TEAMWORK&nbsp;·&nbsp;</span></span></div>
+        <div className="performance-archive frame" data-reveal>
           {flashmobArchive.map((image, index) => (
             <MediaPlate
               image={image}
@@ -142,16 +173,18 @@ export default function Home() {
       </section>
 
       <section className="mag-chapter film-issue" aria-labelledby="film-title">
-        <div className="film-topline frame"><p className="mag-folio">05 / FILM & PERFORMANCE</p><p>APRIL—MAY 2026 · LEAD ACTRESS</p></div>
-        <div className="film-marquee" aria-hidden="true">DISABLED / FROM POEM TO PERFORMANCE</div>
-        <div className="film-frame frame">
+        <div className="chapter-atmosphere" aria-hidden="true"><span /></div>
+        <div className="chapter-overlay" aria-hidden="true" />
+        <div className="film-marquee" aria-hidden="true"><span className="marquee-track"><span>DISABLED / FROM POEM TO PERFORMANCE&nbsp;·&nbsp;</span><span aria-hidden="true">DISABLED / FROM POEM TO PERFORMANCE&nbsp;·&nbsp;</span></span></div>
+        <div className="film-frame frame" data-reveal>
           <div className="film-stills">
             {filmArchive.map((image, index) => (
               <MediaPlate image={image} label="Disabled" className={`film-still film-still-${index + 1}`} key={image.src} />
             ))}
           </div>
           <div className="film-copy">
-            <h2 id="film-title">From poem<br />to performance.</h2>
+            <h2 id="film-title">Poem to<br />film.</h2>
+            <p className="film-meta">April—May 2026 · Lead actress</p>
             <p>{film.summary}</p>
             <p className="film-credit">Best Creative Adaptation · Best Actress nomination</p>
             <Link className="mag-arrow-link" href={`/work/${film.slug}`}>View the film chapter <span aria-hidden="true">↗</span></Link>
@@ -159,9 +192,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mag-colophon frame">
-        <p className="mag-folio">END NOTE / 2026</p>
-        <h2>Stories deserve to be seen,<br />heard, and remembered.</h2>
+      <section className="mag-colophon frame" data-reveal>
+        <h2>Stories move<br />people.</h2>
         <div>
           <p>A student at Le Hong Phong High School for the Gifted, exploring Communication through culture, illustration and shared experiences.</p>
           <Link className="button" href="/work">Explore all projects ↗</Link>

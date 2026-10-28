@@ -13,8 +13,6 @@
     "media:prepare": "node tools/prepare-approved-assets.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/dm-sans": "^5.3.0",
-    "@fontsource-variable/syne": "^5.3.0",
     "next": "^16.4.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

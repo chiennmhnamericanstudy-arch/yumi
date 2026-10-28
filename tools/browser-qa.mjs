@@ -189,23 +189,30 @@ try {
     assert.match(response.headers()["content-type"], /image\/webp/);
   }
   if (approvedMedia.length) {
-    await page.route("**/_next/image?*", (route) => route.abort());
-    await page.goto(base);
-    await page
+    const fallbackContext = await browser.newContext({
+      viewport: { width: 375, height: 812 },
+    });
+    const fallbackPage = await fallbackContext.newPage();
+    await fallbackPage.goto(base);
+    const fallbackPlate = fallbackPage
       .locator(".heritage-issue .media-figure")
-      .first()
-      .scrollIntoViewIfNeeded();
-    await page
+      .first();
+    await fallbackPlate.scrollIntoViewIfNeeded();
+    await fallbackPlate.locator("img").evaluate((img) => {
+      img.removeAttribute("srcset");
+      img.src = "/__forced-missing-image__.webp";
+    });
+    await fallbackPage
       .getByText("Image unavailable", { exact: false })
       .first()
       .waitFor();
     assert.equal(
-      await page
+      await fallbackPage
         .getByRole("link", { name: /Read the cultural story/ })
         .isVisible(),
       true,
     );
-    await page.unroute("**/_next/image?*");
+    await fallbackContext.close();
     report.interactions.push(
       `${approvedMedia.length} approved WebP files, image decoding and failure fallback`,
     );

@@ -1,5 +1,13 @@
 # Heritage in motion — giving tradition a new voice
 
+## 28 October 2026 refinement
+
+Direction: **Name as monument**. Ngọc’s name acts as the masthead while an authentic approved Hát Bội workshop mask and original Yumi artwork become tactile editorial material around it. The current draw used seed `1095088644`. The first drawn layout was rejected because its ring of framed pictures repeated the rigid-card problem; the selected redraw uses a pinned title with organic, transparent objects.
+
+Typography now uses Be Vietnam Pro through `next/font` for Vietnamese and running text, with Syne reserved for English editorial display. The brand’s warm paper, heritage red, cobalt, blush, mint and gold remain intact. Major chapters use separate atmosphere, wash and content layers so texture stays visible without reducing text opacity.
+
+The hero deliberately does not show a student portrait yet. No local photograph verifies which person is Như Ngọc, so the design uses approved cultural material and original artwork until manual identity and crop approval are supplied.
+
 Audience: US university admissions readers. In 30 seconds: identify Như Ngọc as a high-school student interested in Communication; understand her founder/designer roles; find factual evidence and contact.
 
 Subject inventory: Hát Bội mask workshop; Cổ Sắc Tân Thanh; cobalt character outlines; Yumi keychains; Moving, moving... comic; debate microphone; Hàm Cần classroom; Disabled performance; lotus conical hat; Ho Chi Minh City; Le Hong Phong school.

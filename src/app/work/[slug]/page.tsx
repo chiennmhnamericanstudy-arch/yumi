@@ -89,22 +89,22 @@ export default async function ProjectPage({
 
       <div className="case-magazine-body frame">
         <nav className="chapter-nav case-chapter-nav" aria-label="Case study sections">
-          <a href="#question">01 Question</a>
-          <a href="#role">02 My Role</a>
-          <a href="#work">03 The Work</a>
-          <a href="#reach">04 The Reach</a>
-          <a href="#reflection">05 Reflection</a>
+          <a href="#question">Question</a>
+          <a href="#role">My role</a>
+          <a href="#work">The work</a>
+          <a href="#reach">The reach</a>
+          <a href="#reflection">Reflection</a>
         </nav>
 
         <section className="case-editorial-section case-question" id="question">
-          <p className="case-section-index">01 / THE QUESTION</p>
+          <p className="case-section-index">The question</p>
           <h2>{project.question}</h2>
           <p className="editorial-note">Editorial framing of the documented work.</p>
         </section>
 
         <section className="case-editorial-section case-role" id="role">
           <div>
-            <p className="case-section-index">02 / MY ROLE</p>
+            <p className="case-section-index">My role</p>
             <h2>What I brought<br />to the room.</h2>
           </div>
           <p className="case-role-copy">{project.contribution}</p>
@@ -112,7 +112,7 @@ export default async function ProjectPage({
 
         <section className="case-editorial-section case-work" id="work">
           <header>
-            <p className="case-section-index">03 / THE WORK</p>
+            <p className="case-section-index">The work</p>
             <h2>From idea<br />to evidence.</h2>
           </header>
           <div className="case-work-notes">
@@ -134,7 +134,7 @@ export default async function ProjectPage({
             </div>
             <Gallery items={galleryItems()} />
           </section>
-        ) : evidenceImages.length ? (
+        ) : project.slug !== "disabled-film" && evidenceImages.length ? (
           <section className="case-evidence" aria-label={`${project.name} evidence gallery`}>
             {evidenceImages.map((image, index) => (
               <MediaPlate
@@ -148,8 +148,29 @@ export default async function ProjectPage({
         ) : null}
 
         {project.slug === "disabled-film" ? (
+          <section className="case-film-archive" aria-labelledby="film-archive-title">
+            <header>
+              <div>
+                <p className="case-section-index">Festival documentation</p>
+                <h2 id="film-archive-title">Screen and<br />ensemble.</h2>
+              </div>
+              <p>
+                The approved archive currently documents the festival screening and
+                the student film team. Additional production stills remain private
+                until publication rights are confirmed.
+              </p>
+            </header>
+            <div className="case-film-grid">
+              {images.map((image) => (
+                <MediaPlate key={image.src} image={image} label="Disabled" />
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {project.slug === "disabled-film" ? (
           <aside className="viewing-note">
-            <p className="case-section-index">VIEWING NOTE</p>
+            <p className="case-section-index">Viewing note</p>
             <h3>Film viewing</h3>
             <p>The film is not available to stream in this preview. An approved, compressed version with captions is pending.</p>
           </aside>
@@ -157,7 +178,7 @@ export default async function ProjectPage({
 
         <section className="case-reach" id="reach">
           <header>
-            <p className="case-section-index">04 / THE REACH</p>
+            <p className="case-section-index">The reach</p>
             <h2>What moved<br />beyond the page.</h2>
           </header>
           <dl className={`case-metrics ${project.slug === "disabled-film" ? "case-metrics-text" : ""}`}>
@@ -174,7 +195,7 @@ export default async function ProjectPage({
         {project.slug === "lhp-debate" ? (
           <aside className="personal-award case-award">
             <div>
-              <p className="case-section-index">PERSONAL RECOGNITION</p>
+              <p className="case-section-index">Personal recognition</p>
               <h3>Also at the debating table.</h3>
               <p>Global Citizen Debate Challenge, 2025: Regional Champion and National Second Runner-up. These personal competition honors are separate from Ngọc’s club leadership role.</p>
             </div>
@@ -185,7 +206,7 @@ export default async function ProjectPage({
         ) : null}
 
         <section className="case-editorial-section case-reflection" id="reflection">
-          <p className="case-section-index">05 / REFLECTION</p>
+          <p className="case-section-index">Reflection</p>
           <h2>{project.reflectionPrompt}</h2>
           <p className="editorial-note">A prompt for Ngọc. Her personal reflection is awaiting approval.</p>
         </section>

@@ -1,6 +1,13 @@
 # Content and media approval needed
 
-Status: local editorial preview with 21 approved images; not approved for deployment. The user confirmed rights and recognizable-person consent for the first selected batch, then rights for eight further Yumi artworks, on 28 October 2026. No deployment, Git commit, push or account connection has been performed.
+Status: local editorial preview with 40 approved images in the current machine manifest; this refinement is not approved for a new deployment. Earlier deployment history exists, but the changes in this working tree have not been committed, pushed or deployed.
+
+## New refinement decisions needed
+
+- Identify Như Ngọc in one of the five portrait candidates listed in `IMAGE_SELECTION_MANIFEST.md`, confirm the intended crop, and reconfirm that a transparent hero/About cutout may be published. Until then no person is presented as the applicant.
+- Approve additional Film stills individually if a larger production gallery is desired. The supplied award-ceremony image is now approved and replaces the Work-index screening image; other additional Film stills remain private.
+- Supply or approve a compressed, captioned film preview only after performer, music and publication rights are confirmed. The large source MOV remains private.
+- Confirm whether the current `yumidotran@gmail.com` address should remain public before a future deployment.
 
 ## Student voice
 
@@ -11,7 +18,7 @@ The following proposed copy is **REQUIRES STUDENT APPROVAL** before publication:
 | Copy | Current use | Review |
 |---|---|---|
 | “Heritage in motion — Giving tradition a new voice.” | Editorial concept and project framing | Confirm it represents the student’s intention. |
-| “Stories deserve to be seen, heard, and remembered.” | Homepage editorial headline, not a quoted student statement | Confirm wording. |
+| “Stories move people.” | Homepage editorial headline, not a quoted student statement | Confirm wording. |
 | “Drawn to connect.” | Studio section heading; also in supplied portfolio | Confirm preferred personal positioning. |
 | Communication / Media / Public Relations focus | Advisor-requested applicant positioning | Student confirms current direction. |
 | “This project taught me that cultural storytelling becomes more powerful when an audience can participate in it, rather than only observe it.” | NOT on website; draft from supplied copy | Student rewrites or approves with a real example. |
@@ -24,7 +31,7 @@ Blue Rose has no invented first-person answer. Ask the student what she changed 
 
 ## Media checklist
 
-Completed for the selected 21-image set: exact selection, rights/privacy confirmation, hash-bound CSV approval, factual captions and optimized local website copies. All 93 other images remain unapproved. Children, certificates and unresolved watermark sources are held. The checklist below applies to additional media; it does not request approval again for the completed batches.
+Completed for the selected 45-image set: exact selection, rights/privacy confirmation, hash-bound CSV approval, factual captions and optimized local website copies. The Hàm Cần Impact Day 2026 batch was explicitly approved by the user on 28 October 2026. The remaining audited images are not approved for publication; children, other certificates and unresolved watermark sources remain held. The checklist below applies to additional media; it does not request approval again for the completed batches.
 
 - [ ] Review `media-audit/CODEX_ASSET_SELECTION.md` for exact original paths, captions, intended crops and caveats.
 - [ ] In `media-audit/APPROVAL_TEMPLATE.csv`, choose each image individually: `publish=yes`, `rights_ok=yes`, `privacy_ok=yes`, plus a factual caption of at least eight characters. Never approve a whole folder by default.

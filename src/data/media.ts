@@ -9,6 +9,10 @@ export type ApprovedMedia = {
 };
 // Editorial sequence is independent of Drive filenames and audit CSV order.
 const editorialOrder = [
+  "4b38e74fde",
+  "d08b7eb77a",
+  "5b0577577d",
+  "6e00bacfa3",
   "33117a7d9d",
   "8ef620e4be",
   "e0baaa42ba",
@@ -29,6 +33,7 @@ const editorialOrder = [
   "f7ccb575ea",
   "bb499cfe5f",
   "5fc62e2edd",
+  "bff093c47f",
   "18e811c851",
 ];
 const sourceId = (item: ApprovedMedia) =>
