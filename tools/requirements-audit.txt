@@ -1,0 +1,5 @@
+Pillow==13.0.0
+pillow-heif==1.8.1
+PyMuPDF==2.0
+ImageHash==4.3.2
+imageio-ffmpeg==0.6.0

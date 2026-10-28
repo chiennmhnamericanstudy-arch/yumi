@@ -1,0 +1,30 @@
+# Dependencies, build and environment
+node_modules/
+.next/
+out/
+.vercel/
+.env*
+!.env.example
+
+# Source materials/private data - NEVER PUSH
+raw-drive/
+sources/
+assets/photos/
+assets/art/
+review-previews/
+media-source/
+docs/media-audit/
+
+# Only approved media generated in public/media should be committed
+.DS_Store
+Thumbs.db
+
+# Local tooling and private QA artifacts
+.tools/
+.venv/
+.taste-skill/
+test-results/
+playwright-report/
+tmp/
+*.tsbuildinfo
+*.log
