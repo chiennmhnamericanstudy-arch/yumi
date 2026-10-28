@@ -40,7 +40,18 @@ function parseCSV(text) {
     .map((r) => Object.fromEntries(keys.map((k, i) => [k, r[i] ?? ""])));
 }
 const approvalsPath = path.join(root, "docs/media-audit/APPROVAL_TEMPLATE.csv");
-const approvals = fs.existsSync(approvalsPath)
+const sourceRoot = path.resolve(root, "raw-drive");
+const approvalsAvailable = fs.existsSync(approvalsPath);
+const sourcesAvailable = fs.existsSync(sourceRoot);
+const privateVerificationAvailable = approvalsAvailable && sourcesAvailable;
+
+if (approvalsAvailable !== sourcesAvailable) {
+  errors.push(
+    "Private media verification inputs are incomplete: approval records and raw-drive must either both be present or both be absent.",
+  );
+}
+
+const approvals = approvalsAvailable
   ? parseCSV(fs.readFileSync(approvalsPath, "utf8").replace(/^\uFEFF/, ""))
   : [];
 for (const item of catalog) {
@@ -50,31 +61,32 @@ for (const item of catalog) {
     errors.push(`Missing caption/dimensions: ${item.src}`);
   if (!fs.existsSync(path.join(root, "public", item.src)))
     errors.push(`Missing file: ${item.src}`);
-  const hash = item.src.match(/--([a-f0-9]{10})\.webp$/)?.[1];
-  const row = approvals.find(
-    (r) =>
-      r.sha256?.startsWith(hash) &&
-      r.section === item.section &&
-      r.caption.trim() === item.alt &&
-      ["publish", "rights_ok", "privacy_ok"].every(
-        (k) => r[k].trim().toLowerCase() === "yes",
-      ),
-  );
-  if (!row) {
-    errors.push(`Current approval missing or revoked: ${item.src}`);
-    continue;
+  if (privateVerificationAvailable) {
+    const hash = item.src.match(/--([a-f0-9]{10})\.webp$/)?.[1];
+    const row = approvals.find(
+      (r) =>
+        r.sha256?.startsWith(hash) &&
+        r.section === item.section &&
+        r.caption.trim() === item.alt &&
+        ["publish", "rights_ok", "privacy_ok"].every(
+          (k) => r[k].trim().toLowerCase() === "yes",
+        ),
+    );
+    if (!row) {
+      errors.push(`Current approval missing or revoked: ${item.src}`);
+      continue;
+    }
+    const original = path.resolve(sourceRoot, row.relative_path);
+    if (!original.startsWith(sourceRoot + path.sep) || !fs.existsSync(original)) {
+      errors.push(`Source missing or outside private root: ${item.src}`);
+      continue;
+    }
+    if (
+      createHash("sha256").update(fs.readFileSync(original)).digest("hex") !==
+      row.sha256
+    )
+      errors.push(`Source changed after approval: ${item.src}`);
   }
-  const sourceRoot = path.resolve(root, "raw-drive");
-  const original = path.resolve(sourceRoot, row.relative_path);
-  if (!original.startsWith(sourceRoot + path.sep) || !fs.existsSync(original)) {
-    errors.push(`Source missing or outside private root: ${item.src}`);
-    continue;
-  }
-  if (
-    createHash("sha256").update(fs.readFileSync(original)).digest("hex") !==
-    row.sha256
-  )
-    errors.push(`Source changed after approval: ${item.src}`);
 }
 function walk(dir) {
   if (!fs.existsSync(dir)) return;
@@ -99,5 +111,7 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `Public media check passed: ${catalog.length} manifest assets; no unmanifested public files.`,
+  privateVerificationAvailable
+    ? `Public media check passed: ${catalog.length} manifest assets; approvals and private source hashes verified; no unmanifested public files.`
+    : `Public media check passed: ${catalog.length} manifest assets; committed manifest/file integrity verified in CI mode; private verification inputs intentionally unavailable.`,
 );
