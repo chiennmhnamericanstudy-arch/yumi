@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import hatBoiHomeMask from "@/assets/hat-boi-home-mask.png";
 import { Gallery } from "@/components/gallery";
 import { MediaPlate } from "@/components/media";
 import { galleryItems, mediaFor } from "@/data/media";
@@ -57,10 +59,21 @@ export default async function ProjectPage({
         <div className="case-cover-grid">
           <div className="case-cover-type">
             <p className="case-cover-discipline">{project.discipline}</p>
-            <h1>{project.name}</h1>
+            <h1 className={project.slug === "co-sac-tan-thanh" ? "heritage-display-title" : undefined}>{project.name}</h1>
             <p className="case-cover-headline">{project.headline}</p>
           </div>
           <div className="case-opening-images">
+            {project.slug === "co-sac-tan-thanh" ? (
+              <Image
+                className="case-heritage-performer"
+                src={hatBoiHomeMask}
+                alt="Illustrated Hát Bội face mask with a red, black, white and turquoise ceremonial headdress."
+                width={866}
+                height={768}
+                priority
+                sizes="(max-width: 767px) 74vw, 42vw"
+              />
+            ) : null}
             {coverImages.map((image, index) => (
               <MediaPlate
                 image={image}
@@ -141,6 +154,7 @@ export default async function ProjectPage({
                 key={image.src}
                 image={image}
                 label={project.plate}
+                showCaption={project.slug !== "co-sac-tan-thanh"}
                 className={`case-evidence-image case-evidence-image-${index + 1}`}
               />
             ))}

@@ -494,6 +494,900 @@ p {
   }
 }
 
+/* Cổ Sắc Tân Thanh — Hát Bội exhibition catalogue system. */
+.heritage-issue,
+.case-magazine.heritage {
+  --heritage-vermilion: #b72f2f;
+  --heritage-burgundy: #3a101c;
+  --heritage-navy: #071a31;
+  --heritage-gold: #f2c35b;
+  --heritage-paper: #f4ead5;
+  --heritage-turquoise: #27aea4;
+  --heritage-display: var(--font-heritage-display), Georgia, serif;
+}
+
+/* Home chapter: a self-contained exhibition poster. */
+.heritage-issue {
+  --chapter-wash: transparent;
+  color: var(--heritage-gold);
+  background-color: var(--heritage-burgundy);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+}
+
+.heritage-issue .chapter-atmosphere,
+.heritage-issue .chapter-overlay {
+  display: none;
+}
+
+.heritage-issue-inner {
+  padding-block: clamp(72px, 9vw, 138px);
+}
+
+.heritage-editorial-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  min-height: clamp(540px, 55vw, 640px);
+  gap: clamp(12px, 1.5vw, 24px);
+  align-items: end;
+  overflow: clip;
+  background: var(--heritage-navy);
+}
+
+.heritage-editorial-head::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: 1;
+  border: 5px solid var(--heritage-gold);
+  pointer-events: none;
+}
+
+.heritage-editorial-head::after {
+  content: none;
+}
+
+.heritage-editorial-head h2 {
+  grid-column: 1 / span 8;
+  align-self: center;
+  z-index: 3;
+  max-width: 7.2ch;
+  margin: 0 0 0 clamp(32px, 5vw, 78px);
+  color: var(--heritage-gold);
+  font-family: var(--heritage-display);
+  font-size: clamp(4.8rem, 9vw, 8.8rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.8;
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.heritage-deck {
+  grid-column: 1 / span 5;
+  z-index: 4;
+  align-self: end;
+  justify-self: stretch;
+  max-width: 18ch;
+  margin: 0 0 clamp(36px, 5vw, 72px) clamp(32px, 5vw, 78px);
+  color: var(--heritage-paper);
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 600;
+  line-height: 1.22;
+}
+
+.heritage-intro {
+  position: absolute;
+  top: 52%;
+  left: clamp(32px, 5vw, 78px);
+  z-index: 4;
+  max-width: 42ch;
+  color: var(--heritage-paper);
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.5;
+}
+
+.heritage-founder {
+  display: flex;
+  gap: 10px 18px;
+  align-items: baseline;
+  margin-bottom: 12px;
+  color: var(--heritage-gold);
+}
+
+.heritage-founder strong {
+  font-weight: 800;
+}
+
+.heritage-founder span {
+  color: var(--heritage-paper);
+}
+
+.heritage-performer-art {
+  position: absolute;
+  right: 28px;
+  bottom: 28px;
+  z-index: 2;
+  width: auto;
+  height: calc(100% - 56px);
+  max-width: 50vw;
+  object-fit: contain;
+}
+
+.heritage-mask-wall {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(2, clamp(235px, 28vw, 380px)) clamp(260px, 29vw, 410px);
+  align-items: stretch;
+  gap: 0;
+  margin-top: clamp(24px, 2.8vw, 42px);
+  padding: clamp(18px, 2vw, 30px);
+  background-color: rgb(183 47 47 / 76%);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+}
+
+.heritage-mask-wall .heritage-shot {
+  position: relative;
+  grid-column: auto;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  transform: none;
+}
+
+.heritage-mask-wall .heritage-shot-1 { grid-column: 1 / span 7; grid-row: 1 / span 2; }
+.heritage-mask-wall .heritage-shot-2 { grid-column: 8 / span 5; grid-row: 1; }
+.heritage-mask-wall .heritage-shot-3 { grid-column: 8 / span 5; grid-row: 2; }
+.heritage-mask-wall .heritage-shot-4 { grid-column: 1 / span 4; grid-row: 3; }
+.heritage-mask-wall .heritage-shot-5 { grid-column: 5 / span 4; grid-row: 3; }
+.heritage-mask-wall .heritage-shot-6 { grid-column: 9 / span 4; grid-row: 3; }
+
+@media (min-width: 768px) {
+  .heritage-mask-wall .heritage-shot-1 {
+    border-right: 6px solid var(--heritage-gold);
+    border-bottom: 6px solid var(--heritage-gold);
+  }
+
+  .heritage-mask-wall .heritage-shot-2,
+  .heritage-mask-wall .heritage-shot-3 {
+    border-bottom: 6px solid var(--heritage-gold);
+  }
+
+  .heritage-mask-wall .heritage-shot-4,
+  .heritage-mask-wall .heritage-shot-5 {
+    border-right: 6px solid var(--heritage-gold);
+  }
+}
+
+.heritage-mask-wall .heritage-shot .image-wrap {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.heritage-mask-wall .image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heritage-story {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(38px, 6vw, 94px);
+  align-items: end;
+  margin-top: 0;
+  padding: clamp(54px, 7vw, 110px);
+  color: var(--heritage-navy);
+  background: var(--heritage-gold);
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .heritage-editorial-head {
+    background: rgb(7 26 49 / 84%);
+  }
+
+  .heritage-mask-wall {
+    background: rgb(183 47 47 / 76%);
+  }
+
+  .heritage-story {
+    background: rgb(242 195 91 / 86%);
+  }
+}
+
+.heritage-dropcap {
+  max-width: 40ch;
+  font-family: var(--heritage-display);
+  font-size: clamp(26px, 2.8vw, 43px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.heritage-dropcap::first-letter {
+  float: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.heritage-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.heritage-facts p {
+  min-width: 0;
+  padding-top: 16px;
+  border-top: 6px solid var(--heritage-navy);
+  font-size: 14px;
+}
+
+.heritage-facts strong {
+  color: var(--heritage-navy);
+  font-family: var(--heritage-display);
+  font-size: clamp(42px, 5vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+}
+
+.heritage-story .mag-arrow-link {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 28px;
+  padding: 14px 18px;
+  color: var(--heritage-gold);
+  background: var(--heritage-navy);
+}
+
+/* Case study cover and chapters. */
+.case-magazine.heritage {
+  --case-bg: var(--heritage-burgundy);
+  --case-ink: var(--heritage-gold);
+  --case-accent: var(--heritage-turquoise);
+  --case-soft: var(--heritage-paper);
+  color: var(--heritage-gold);
+  background: var(--heritage-burgundy);
+}
+
+.case-magazine.heritage .case-magazine-cover {
+  min-height: 920px;
+  color: var(--heritage-gold);
+  background-color: var(--heritage-burgundy);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+}
+
+.case-magazine.heritage .case-magazine-cover::before {
+  inset: 0 0 0 58%;
+  z-index: -1;
+  background: rgb(7 26 49 / 84%);
+  opacity: 1;
+}
+
+.case-magazine.heritage .case-cover-nav {
+  position: relative;
+  z-index: 6;
+  color: var(--heritage-paper);
+}
+
+.case-magazine.heritage .case-cover-grid {
+  position: relative;
+  z-index: 2;
+  grid-template-columns: 42% 58%;
+  gap: 0;
+  min-height: 680px;
+}
+
+.case-magazine.heritage .case-cover-type {
+  position: relative;
+  z-index: 5;
+  align-self: center;
+  padding: 64px 3vw 64px 0;
+}
+
+.case-magazine.heritage .case-cover-discipline {
+  max-width: 24ch;
+  margin-bottom: 30px;
+  color: var(--heritage-paper);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.case-magazine.heritage .case-cover-type h1 {
+  max-width: 6.6ch;
+  color: var(--heritage-gold);
+  font-family: var(--heritage-display);
+  font-size: clamp(5.2rem, 8.7vw, 9rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.82;
+}
+
+.case-magazine.heritage .case-cover-headline {
+  max-width: 16ch;
+  margin-top: 42px;
+  color: var(--heritage-paper);
+  font-family: var(--font-vietnamese);
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.case-magazine.heritage .case-opening-images {
+  min-height: 680px;
+  overflow: clip;
+}
+
+.case-heritage-performer {
+  position: absolute;
+  right: 1.5%;
+  bottom: 3%;
+  z-index: 3;
+  width: min(42vw, 610px);
+  height: auto;
+}
+
+.case-magazine.heritage .case-opening-image-1 {
+  inset: auto auto 3% 0;
+  z-index: 4;
+  width: 34%;
+  transform: none;
+  border: 7px solid var(--heritage-gold);
+}
+
+.case-magazine.heritage .case-opening-image-1 .image-wrap { aspect-ratio: 3 / 4; }
+
+.case-magazine.heritage .case-opening-image-2 {
+  right: 1%;
+  bottom: 2%;
+  z-index: 5;
+  width: 24%;
+  transform: none;
+  border: 7px solid var(--heritage-turquoise);
+}
+
+.case-magazine.heritage .case-issue-mark { display: none; }
+
+.case-magazine.heritage .case-cover-footer {
+  position: relative;
+  z-index: 6;
+  margin-inline: calc(var(--page-margin) * -1);
+  padding: 28px var(--page-margin);
+  color: var(--heritage-paper);
+  background-color: rgb(7 26 49 / 78%);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+  border: 0;
+}
+
+.case-magazine.heritage .case-cover-footer span { color: var(--heritage-gold); }
+
+.case-magazine.heritage .case-kinetic-strip {
+  width: 100%;
+  max-width: none;
+  padding: 18px var(--page-margin);
+  color: var(--heritage-navy);
+  background: var(--heritage-gold);
+  font-family: var(--heritage-display);
+  font-weight: 600;
+  transform: none;
+}
+
+.case-magazine.heritage .case-magazine-body {
+  padding-top: 78px;
+  padding-bottom: 0;
+  color: var(--heritage-navy);
+  background: var(--heritage-paper);
+}
+
+.case-magazine.heritage .case-chapter-nav {
+  color: var(--heritage-gold);
+  background: var(--heritage-navy);
+}
+
+.case-magazine.heritage .case-magazine-body h2,
+.case-magazine.heritage .case-magazine-body h3 {
+  font-family: var(--heritage-display);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.case-magazine.heritage .case-section-index {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.case-magazine.heritage .case-question,
+.case-magazine.heritage .case-work,
+.case-magazine.heritage .case-evidence,
+.case-magazine.heritage .case-reach,
+.case-magazine.heritage .case-reflection {
+  margin-inline: calc(var(--page-margin) * -1);
+  padding-inline: var(--page-margin);
+}
+
+.case-magazine.heritage .case-question {
+  padding-block: clamp(110px, 13vw, 190px);
+  color: var(--heritage-gold);
+  background-color: var(--heritage-burgundy);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+}
+
+.case-magazine.heritage .case-question h2 {
+  max-width: 15ch;
+  font-size: clamp(46px, 6vw, 88px);
+  line-height: 1;
+}
+
+.case-magazine.heritage .case-question .editorial-note { color: var(--heritage-paper); }
+
+.case-magazine.heritage .case-role {
+  grid-template-columns: 42% 58%;
+  gap: 0;
+  padding-block: clamp(120px, 14vw, 210px);
+  color: var(--heritage-navy);
+  background: var(--heritage-paper);
+}
+
+.case-magazine.heritage .case-role h2 {
+  max-width: 8ch;
+  font-size: clamp(54px, 7vw, 102px);
+  line-height: 0.9;
+}
+
+.case-magazine.heritage .case-role-copy {
+  max-width: 38ch;
+  padding-left: clamp(28px, 5vw, 82px);
+  font-size: clamp(21px, 2.1vw, 31px);
+}
+
+.case-magazine.heritage .case-work {
+  padding-block: clamp(100px, 12vw, 180px);
+  color: var(--heritage-gold);
+  background: var(--heritage-navy);
+}
+
+.case-magazine.heritage .case-work > header {
+  grid-template-columns: 42% 58%;
+}
+
+.case-magazine.heritage .case-work > header h2 {
+  max-width: 8ch;
+  color: var(--heritage-gold);
+  font-size: clamp(54px, 7vw, 102px);
+  line-height: 0.9;
+}
+
+.case-magazine.heritage .case-work-notes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 84px;
+}
+
+.case-magazine.heritage .case-work-notes article {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  min-height: 0;
+  padding: clamp(34px, 4vw, 62px);
+  color: var(--heritage-gold);
+  background: var(--heritage-burgundy);
+  border: 0;
+  transform: none;
+}
+
+.case-magazine.heritage .case-work-notes article:nth-child(2) {
+  color: var(--heritage-navy);
+  background: var(--heritage-gold);
+}
+
+.case-magazine.heritage .case-work-notes article:nth-child(3) {
+  color: var(--heritage-paper);
+  background: var(--heritage-vermilion);
+}
+
+.case-magazine.heritage .case-work-notes h3 {
+  align-self: start;
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(30px, 3.3vw, 52px);
+  line-height: 1;
+}
+
+.case-magazine.heritage .case-work-notes p {
+  max-width: 48ch;
+  margin: 0;
+  padding-left: clamp(22px, 4vw, 64px);
+  font-size: 18px;
+}
+
+.case-magazine.heritage .case-evidence {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0;
+  padding-block: clamp(28px, 4vw, 62px);
+  background-color: rgb(183 47 47 / 72%);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+}
+
+.case-magazine.heritage .case-evidence-image,
+.case-magazine.heritage .case-evidence-image:nth-child(even) {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .case-magazine.heritage .case-evidence {
+    grid-template-rows:
+      repeat(2, clamp(300px, 25vw, 360px))
+      clamp(380px, 36vw, 520px);
+    align-items: stretch;
+  }
+
+  .case-magazine.heritage .case-evidence-image,
+  .case-magazine.heritage .case-evidence-image:nth-child(even) {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(1) {
+    grid-column: 1 / span 7;
+    grid-row: 1 / span 2;
+    border-right: 6px solid var(--heritage-gold);
+    border-bottom: 6px solid var(--heritage-gold);
+  }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(2) {
+    grid-column: 8 / span 5;
+    grid-row: 1;
+    border-bottom: 6px solid var(--heritage-gold);
+  }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(3) {
+    grid-column: 8 / span 5;
+    grid-row: 2;
+    border-bottom: 6px solid var(--heritage-gold);
+  }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(4) {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .case-magazine.heritage .case-evidence .image-wrap {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    min-height: 0;
+  }
+
+  .case-magazine.heritage .case-evidence .image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.case-magazine.heritage .case-reach {
+  padding-block: clamp(110px, 14vw, 210px);
+  color: var(--heritage-navy);
+  background: var(--heritage-gold);
+}
+
+.case-magazine.heritage .case-reach h2 {
+  max-width: 8ch;
+  font-size: clamp(54px, 7vw, 102px);
+  line-height: 0.9;
+}
+
+.case-magazine.heritage .case-metrics {
+  gap: 8px;
+}
+
+.case-magazine.heritage .case-metrics > div {
+  min-height: 190px;
+  padding: 20px;
+  color: var(--heritage-gold);
+  background: var(--heritage-navy);
+  border: 0;
+}
+
+.case-magazine.heritage .case-metrics dd {
+  color: var(--heritage-gold);
+  font-family: var(--heritage-display);
+  font-weight: 700;
+}
+
+.case-magazine.heritage .case-reflection {
+  padding-block: clamp(110px, 14vw, 210px);
+  color: var(--heritage-gold);
+  background-color: var(--heritage-burgundy);
+  background-image: url("../assets/hat-boi-pattern.svg");
+  background-size: 240px 240px;
+}
+
+.case-magazine.heritage .case-reflection h2 {
+  max-width: 16ch;
+  font-size: clamp(46px, 5.8vw, 84px);
+  line-height: 1;
+}
+
+.case-magazine.heritage .case-reflection .editorial-note { color: var(--heritage-paper); }
+
+.case-magazine.heritage .case-next-project {
+  margin-inline: calc(var(--page-margin) * -1);
+  color: var(--heritage-gold);
+  background: var(--heritage-navy);
+}
+
+.case-magazine.heritage .case-next-project strong {
+  color: var(--heritage-gold);
+  font-family: var(--heritage-display);
+}
+
+@media (min-width: 768px) {
+  .case-magazine.heritage .case-magazine-body {
+    padding-top: 48px;
+  }
+
+  .case-magazine.heritage .case-question {
+    padding-block: clamp(88px, 8vw, 124px);
+    background-color: rgb(58 16 28 / 88%);
+  }
+
+  .case-magazine.heritage .case-role {
+    padding-block: clamp(88px, 8vw, 124px);
+    background-color: rgb(244 234 213 / 88%);
+    background-image: url("../assets/hat-boi-pattern.svg");
+    background-size: 240px 240px;
+  }
+
+  .case-magazine.heritage .case-work {
+    padding-block: clamp(88px, 8vw, 124px);
+    background-color: rgb(7 26 49 / 88%);
+    background-image: url("../assets/hat-boi-pattern.svg");
+    background-size: 240px 240px;
+  }
+
+  .case-magazine.heritage .case-reach {
+    padding-block: clamp(88px, 8vw, 124px);
+    background-color: rgb(242 195 91 / 86%);
+    background-image: url("../assets/hat-boi-pattern.svg");
+    background-size: 240px 240px;
+  }
+
+  .case-magazine.heritage .case-reflection {
+    padding-block: clamp(88px, 8vw, 124px);
+    background-color: rgb(58 16 28 / 88%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .heritage-performer-art,
+  .case-heritage-performer {
+    animation: heritage-shutter 1050ms var(--ease-expo) both;
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes heritage-shutter {
+  from { clip-path: inset(0 0 0 100%); transform: scale(1); }
+  to { clip-path: inset(0); transform: scale(1); }
+}
+
+@media (max-width: 900px) {
+  .heritage-editorial-head {
+    min-height: 560px;
+  }
+
+  .heritage-editorial-head h2 {
+    grid-column: 1 / span 9;
+    font-size: clamp(4.8rem, 12vw, 7.3rem);
+  }
+
+  .heritage-performer-art {
+    width: auto;
+    height: calc(100% - 56px);
+  }
+
+  .case-magazine.heritage .case-cover-grid { grid-template-columns: 46% 54%; }
+  .case-magazine.heritage .case-cover-type h1 { font-size: clamp(4.6rem, 9.5vw, 7.2rem); }
+}
+
+@media (max-width: 767px) {
+  .heritage-issue-inner { padding-block: 64px; }
+
+  .heritage-editorial-head {
+    display: block;
+    min-height: 560px;
+  }
+
+  .heritage-editorial-head::before { inset: 10px; border-width: 4px; }
+
+  .heritage-editorial-head h2 {
+    position: relative;
+    z-index: 4;
+    max-width: 6.5ch;
+    margin: 0;
+    padding: 64px 24px 0;
+    font-size: clamp(4.2rem, 20vw, 6rem);
+    line-height: 0.82;
+  }
+
+  .heritage-deck {
+    position: absolute;
+    left: 24px;
+    bottom: 32px;
+    z-index: 5;
+    max-width: 13ch;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .heritage-performer-art {
+    right: 18px;
+    bottom: 18px;
+    width: auto;
+    height: calc(100% - 36px);
+    max-width: 70vw;
+  }
+
+  .heritage-mask-wall {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    padding: 10px;
+  }
+
+  .heritage-mask-wall .heritage-shot,
+  .heritage-mask-wall .heritage-shot-1,
+  .heritage-mask-wall .heritage-shot-2,
+  .heritage-mask-wall .heritage-shot-3,
+  .heritage-mask-wall .heritage-shot-4,
+  .heritage-mask-wall .heritage-shot-5,
+  .heritage-mask-wall .heritage-shot-6 {
+    grid-column: auto;
+    grid-row: auto;
+    margin: 0;
+  }
+
+  .heritage-mask-wall .heritage-shot-1 { grid-column: 1 / -1; }
+  .heritage-mask-wall .heritage-shot-6 { grid-column: 1 / -1; }
+  .heritage-mask-wall .heritage-shot .image-wrap { min-height: 240px; aspect-ratio: 4 / 5; }
+  .heritage-mask-wall .heritage-shot-1 .image-wrap,
+  .heritage-mask-wall .heritage-shot-6 .image-wrap { min-height: 300px; aspect-ratio: 4 / 3; }
+
+  .heritage-mask-wall .heritage-shot .image-wrap {
+    position: relative;
+    inset: auto;
+    height: auto;
+  }
+
+  .heritage-story {
+    grid-template-columns: 1fr;
+    padding: 44px 22px;
+  }
+
+  .heritage-dropcap { font-size: 28px; }
+  .heritage-facts { gap: 8px; }
+  .heritage-facts p { padding-top: 10px; font-size: 11px; }
+  .heritage-facts strong { font-size: 38px; }
+  .heritage-story .mag-arrow-link { grid-column: auto; }
+
+  .case-magazine.heritage .case-magazine-cover {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .case-magazine.heritage .case-magazine-cover::before {
+    inset: 56% 0 0;
+  }
+
+  .case-magazine.heritage .case-cover-grid { display: block; }
+
+  .case-magazine.heritage .case-cover-type {
+    min-height: 520px;
+    padding: 62px 0 36px;
+  }
+
+  .case-magazine.heritage .case-cover-type h1 {
+    max-width: 6.5ch;
+    font-size: clamp(4.25rem, 20vw, 5.8rem);
+  }
+
+  .case-magazine.heritage .case-cover-headline { max-width: 13ch; }
+
+  .case-magazine.heritage .case-opening-images { min-height: 520px; }
+
+  .case-heritage-performer {
+    right: -18%;
+    width: 96vw;
+  }
+
+  .case-magazine.heritage .case-opening-image-1 { left: 0; width: 36%; }
+  .case-magazine.heritage .case-opening-image-2 { right: 0; width: 30%; }
+
+  .case-magazine.heritage .case-cover-footer {
+    grid-template-columns: 1fr 1fr;
+    margin-inline: 0;
+  }
+
+  .case-magazine.heritage .case-magazine-body { padding-top: 52px; }
+
+  .case-magazine.heritage .case-question,
+  .case-magazine.heritage .case-role,
+  .case-magazine.heritage .case-work > header,
+  .case-magazine.heritage .case-reach,
+  .case-magazine.heritage .case-reflection {
+    grid-template-columns: 1fr;
+  }
+
+  .case-magazine.heritage .case-question h2,
+  .case-magazine.heritage .case-role h2,
+  .case-magazine.heritage .case-work > header h2,
+  .case-magazine.heritage .case-reach h2,
+  .case-magazine.heritage .case-reflection h2 {
+    font-size: clamp(42px, 13vw, 58px);
+  }
+
+  .case-magazine.heritage .case-role-copy { padding-left: 0; }
+
+  .case-magazine.heritage .case-work-notes article {
+    display: block;
+    min-height: 0;
+    padding: 32px 22px;
+  }
+
+  .case-magazine.heritage .case-work-notes h3 { margin-bottom: 24px; }
+  .case-magazine.heritage .case-work-notes p { padding-left: 0; font-size: 16px; }
+
+  .case-magazine.heritage .case-evidence { grid-template-columns: 1fr 1fr; padding: 10px; }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(1),
+  .case-magazine.heritage .case-evidence-image:nth-child(2),
+  .case-magazine.heritage .case-evidence-image:nth-child(3),
+  .case-magazine.heritage .case-evidence-image:nth-child(4) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(1),
+  .case-magazine.heritage .case-evidence-image:nth-child(4) { grid-column: 1 / -1; }
+
+  .case-magazine.heritage .case-evidence .image-wrap,
+  .case-magazine.heritage .case-evidence-image:nth-child(1) .image-wrap,
+  .case-magazine.heritage .case-evidence-image:nth-child(2) .image-wrap,
+  .case-magazine.heritage .case-evidence-image:nth-child(3) .image-wrap,
+  .case-magazine.heritage .case-evidence-image:nth-child(4) .image-wrap { min-height: 260px; }
+
+  .case-magazine.heritage .case-evidence-image:nth-child(1) .image-wrap,
+  .case-magazine.heritage .case-evidence-image:nth-child(4) .image-wrap { min-height: 340px; }
+
+  .case-magazine.heritage .case-metrics { grid-template-columns: 1fr 1fr; }
+  .case-magazine.heritage .case-metrics > div { min-height: 150px; }
+  .case-magazine.heritage .case-next-project { margin-inline: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heritage-performer-art,
+  .case-heritage-performer {
+    animation: none;
+    clip-path: none;
+    transform: none;
+  }
+}
+
 .film-issue .film-stills {
   position: relative;
   z-index: 2;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import hatBoiMaskCutout from "@/assets/hat-boi-performer-v2.webp";
+import hatBoiHero from "@/assets/hat-boi-hero.png";
+import hatBoiHomeMask from "@/assets/hat-boi-home-mask.png";
 import { MediaPlate } from "@/components/media";
 import { mediaFor } from "@/data/media";
 import { projects, student } from "@/data/projects";
@@ -40,8 +41,8 @@ export default function Home() {
           <p className="hero-role-line">Student communicator &amp; illustrator</p>
           <Image
             className="hero-mask-cutout"
-            src={hatBoiMaskCutout}
-            alt="Ornate opera performer illustration with a blue-and-gold headdress and red costume."
+            src={hatBoiHomeMask}
+            alt="Illustrated Hát Bội face mask with a red, black, white and turquoise ceremonial headdress."
             width={866}
             height={768}
             priority
@@ -70,13 +71,28 @@ export default function Home() {
         <div className="heritage-issue-inner frame">
           <header className="heritage-editorial-head" data-reveal>
             <h2 id="heritage-title" lang="vi">Cổ Sắc<br />Tân Thanh</h2>
-            <p className="heritage-deck">Giving tradition a new voice.</p>
+            <div className="heritage-intro">
+              <p className="heritage-founder"><strong>Founder &amp; Creative Director</strong><span>Đỗ Trần Như Ngọc</span></p>
+              <p>Hát Bội is a classical form of Vietnamese theatre, distinguished by symbolic face painting, elaborate costumes, stylized movement and powerful percussion. Its stories bring questions of loyalty, courage and moral conflict vividly to the stage.</p>
+            </div>
+            <p className="heritage-deck">Hát Bội, retold for a new generation.</p>
+            <Image
+              className="heritage-performer-art"
+              src={hatBoiHero}
+              alt="Illustrated Hát Bội character with a blue ceremonial headdress, red pom-poms and long gold tassels."
+              sizes="(max-width: 767px) 70vw, 38vw"
+            />
           </header>
           <div className="heritage-mask-wall" data-reveal>
             {heritageArchive.map((image, index) => (
-              <MediaPlate image={image} label="Hát Bội" className={`heritage-shot heritage-shot-${index + 1}`} key={image.src} />
+              <MediaPlate
+                image={image}
+                label="Hát Bội"
+                className={`heritage-shot heritage-shot-${index + 1}`}
+                key={image.src}
+                showCaption={false}
+              />
             ))}
-            <div className="heritage-sun" aria-hidden="true"><span>戲</span></div>
           </div>
           <div className="heritage-story">
             <p className="heritage-dropcap">{heritage.summary}</p>
